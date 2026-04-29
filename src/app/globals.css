@@ -38,3 +38,6 @@ body {
 .prose strong { font-weight: 600; color: #333; }
 .prose blockquote { border-left: 3px solid #B6B2A3; padding-left: 1.5rem; color: #6C6C6C; font-style: italic; margin: 1.5rem 0; font-size: 17px; line-height: 1.7; }
 .prose hr { border-color: #e5e5e5; margin: 2rem 0; }
+
+.article-card { background: #fff; padding: 2rem; border-left: 3px solid transparent; transition: border-color 300ms ease; }
+.article-card:hover { border-left-color: #B6B2A3; }
