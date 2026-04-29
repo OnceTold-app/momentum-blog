@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Poppins', 'Open Sans', system-ui, sans-serif;
+  @apply bg-white text-gray-900;
+}
+
+.prose h2 { @apply text-2xl font-semibold text-primary-500 mt-8 mb-3; }
+.prose h3 { @apply text-xl font-semibold text-primary-500 mt-6 mb-2; }
+.prose p  { @apply text-gray-700 leading-relaxed mb-4; }
+.prose ul { @apply list-disc pl-6 mb-4 text-gray-700; }
+.prose ol { @apply list-decimal pl-6 mb-4 text-gray-700; }
+.prose li { @apply mb-1; }
+.prose a  { @apply text-primary-500 underline hover:text-gold-500; }
+.prose strong { @apply font-semibold text-gray-900; }
+.prose blockquote { @apply border-l-4 border-gold-500 pl-4 italic text-gray-600 my-4; }
+.prose hr { @apply border-gray-200 my-8; }
