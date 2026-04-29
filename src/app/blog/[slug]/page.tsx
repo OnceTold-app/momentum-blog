@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { getAllPosts, getPostBySlug, formatDate } from '@/lib/blog'
@@ -26,69 +27,66 @@ export default async function PostPage({ params }: Props) {
   if (!post) notFound()
 
   return (
-    <div className="min-h-screen bg-[#F6F6F6]">
-      {/* Nav */}
-      <nav className="bg-primary-500 px-6 py-4">
-        <div className="max-w-3xl mx-auto flex items-center justify-between">
-          <Link href="/blog" className="text-white font-semibold text-xl tracking-tight">
-            Momentum <span className="text-gold-500">Partners</span>
-          </Link>
-          <a
-            href="https://momentumpartners.co.nz"
-            className="px-4 py-2 border border-gold-500 text-gold-500 hover:bg-gold-500 hover:text-primary-500 font-semibold text-sm rounded-lg transition-colors"
-          >
-            Book a free chat
-          </a>
-        </div>
-      </nav>
+    <div className="min-h-screen bg-white">
 
-      <main className="max-w-3xl mx-auto px-6 py-12">
-        <Link href="/blog" className="text-sm text-gray-500 hover:text-primary-500 font-medium mb-8 inline-block transition-colors">
+      {/* ── Header ── */}
+      <header style={{ position: 'relative', borderBottom: '1px solid #f0f0f0' }}>
+        <div style={{ maxWidth: 1140, margin: '0 auto', padding: '20px 5%', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <a href="https://momentumpartners.co.nz">
+            <Image src="/blog/momentum-logo.png" alt="Momentum Partners" width={80} height={50} style={{ width: 80, height: 'auto' }} />
+          </a>
+          <nav style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
+            <a href="https://momentumpartners.co.nz/about.html" style={{ color: '#333', fontSize: 14, textDecoration: 'none' }}>About</a>
+            <a href="https://momentumpartners.co.nz/contact.html" style={{ color: '#333', fontSize: 14, textDecoration: 'none' }}>Contact</a>
+            <a href="https://momentumpartners.co.nz/contact.html" className="btn-outline" style={{ fontSize: 13 }}>
+              Book a conversation
+            </a>
+          </nav>
+        </div>
+      </header>
+
+      <main style={{ maxWidth: 800, margin: '0 auto', padding: '60px 5%' }}>
+        <Link href="/blog" style={{ color: '#6C6C6C', fontSize: 13, textDecoration: 'none', display: 'inline-block', marginBottom: '2.5rem' }}>
           ← All articles
         </Link>
 
-        {/* Tags */}
-        <div className="flex flex-wrap gap-2 mb-4">
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginBottom: 16 }}>
           {post.tags.map(tag => (
-            <span key={tag} className="text-xs font-medium text-primary-500 bg-primary-50 px-2.5 py-0.5 rounded-full">
-              {tag}
-            </span>
+            <span key={tag} style={{ fontSize: 11, fontWeight: 500, color: '#B6B2A3', letterSpacing: '0.05em', textTransform: 'uppercase' }}>{tag}</span>
           ))}
         </div>
 
-        <h1 className="text-3xl font-semibold text-primary-500 leading-tight mb-3">{post.title}</h1>
-        <p className="text-gray-400 text-sm font-medium mb-10 pb-10 border-b border-gray-200">{formatDate(post.date)}</p>
+        <h1 style={{ fontSize: 30, fontWeight: 600, color: '#223C37', lineHeight: 1.3, margin: '0 0 12px' }}>{post.title}</h1>
+        <p style={{ color: '#B6B2A3', fontSize: 13, marginBottom: '3rem' }}>{formatDate(post.date)}</p>
 
-        {/* Body */}
         <article
-          className="prose max-w-none"
+          className="prose"
+          style={{ maxWidth: '100%' }}
           dangerouslySetInnerHTML={{ __html: post.content ?? '' }}
         />
 
         {/* CTA */}
-        <div className="mt-12 p-6 bg-primary-500 rounded-2xl text-center">
-          <p className="text-white font-semibold text-lg mb-2">Ready to talk through your options?</p>
-          <p className="text-gold-400 text-sm mb-4">Our advisers are here to help — no obligation, no jargon.</p>
-          <a
-            href="https://momentumpartners.co.nz"
-            className="inline-block px-6 py-2.5 border border-gold-500 text-gold-500 hover:bg-gold-500 hover:text-primary-500 font-semibold text-sm rounded-lg transition-colors"
-          >
-            Book a free chat →
+        <div style={{ marginTop: '3rem', padding: '2rem', background: '#F6F6F6', borderLeft: '3px solid #B6B2A3' }}>
+          <p style={{ margin: '0 0 16px', color: '#223C37', fontWeight: 600, fontSize: 16 }}>Ready to talk through your mortgage options?</p>
+          <a href="https://momentumpartners.co.nz/contact.html" className="btn-outline">
+            Book a free conversation
           </a>
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className="bg-primary-500 text-white mt-8 py-8 px-6">
-        <div className="max-w-3xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-          <span className="font-semibold">Momentum <span className="text-gold-500">Partners</span></span>
-          <span className="text-gold-400 text-sm">FSP#753591 — Licensed Financial Advice Provider</span>
-          <a
-            href="https://momentumpartners.co.nz"
-            className="text-gold-500 hover:text-gold-300 text-sm font-semibold transition-colors"
-          >
-            momentumpartners.co.nz
-          </a>
+      {/* ── Footer ── */}
+      <footer style={{ background: '#223C37', padding: '40px 5%', marginTop: '4rem' }}>
+        <div style={{ maxWidth: 1140, margin: '0 auto', display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: 16 }}>
+          <nav style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap' }}>
+            {['/', '/about.html', '/disclosure.html', '/privacy.html', '/contact.html'].map((href, i) => (
+              <a key={href} href={`https://momentumpartners.co.nz${href}`} style={{ color: '#B6B2A3', fontSize: 14, textDecoration: 'none' }}>
+                {['Home', 'About', 'Disclosure', 'Privacy', 'Contact'][i]}
+              </a>
+            ))}
+          </nav>
+          <p style={{ color: '#B6B2A3', fontSize: 13, margin: 0 }}>
+            Momentum Partners · FSP#753591 · © {new Date().getFullYear()}
+          </p>
         </div>
       </footer>
     </div>
