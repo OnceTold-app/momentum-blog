@@ -72,7 +72,7 @@ export default async function PostPage({ params }: Props) {
       {/* ── Article content ── */}
       <div style={{ background: '#F6F6F6', padding: '60px 0' }}>
         <div style={{ maxWidth: 760, margin: '0 auto', padding: '0 5%' }}>
-          <Link href="/blog" style={{ color: '#6C6C6C', fontSize: 13, textDecoration: 'none', display: 'inline-block', marginBottom: '2.5rem' }}>
+          <Link href="/" style={{ color: '#6C6C6C', fontSize: 13, textDecoration: 'none', display: 'inline-block', marginBottom: '2.5rem' }}>
             ← All articles
           </Link>
           <div style={{ background: '#fff', padding: '3rem', lineHeight: 1.85 }}>
